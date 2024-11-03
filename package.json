@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "project_barg_denise": "file:",
     "vue": "^3.4.29"
   },
