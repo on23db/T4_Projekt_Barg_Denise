@@ -30,11 +30,15 @@
   };
   </script>
   
-  <style>
+  <style scoped>
   .card {
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
+  }
+  p {
+    font-size: 0.9rem;
+    font-family: 'Roboto', sans-serif;
   }
   </style>
   
