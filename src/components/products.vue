@@ -2,13 +2,13 @@
   <div>
     <h2>Unsere Produkte</h2>
     <div class="row">
-      <div v-for="(product, index) in products" :key="index" class="col-6 col-sm-6 col-md-3 mb-4">
+      <div v-for="(product, index) in products" :key="index" class="col-6 col-md-4 col-lg-3 mb-3">
         <div class="card">
-          <img :src="product.image" class="card-img-top" :alt="product.name" />
+          <img :src="product.image ? product.image : 'https://via.placeholder.com/100'" class="card-img-top" :alt="product.name" />
           <div class="card-body">
-            <p class="card-text"><strong>Marke:</strong> {{ product.brand }}</p>
+            <p class="card-text">{{ product.brand }}</p>
             <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text"><strong>Preis:</strong> {{ product.price }} €</p>
+            <p class="card-text">{{ product.price }} €</p>
           </div>
         </div>
       </div>
@@ -18,18 +18,26 @@
 
 <script>
 export default {
-  name: 'products',
+  name: 'Products',
   data() {
     return {
-      products: [
-        { name: 'Produkt 1', brand: 'Marke A', description: 'Beschreibung für Produkt 1', price: '29.99', image: 'https://via.placeholder.com/150' },
-        { name: 'Produkt 2', brand: 'Marke B', description: 'Beschreibung für Produkt 2', price: '49.99', image: 'https://via.placeholder.com/150' },
-        { name: 'Produkt 3', brand: 'Marke C', description: 'Beschreibung für Produkt 3', price: '19.99', image: 'https://via.placeholder.com/150' },
-        { name: 'Produkt 4', brand: 'Marke D', description: 'Beschreibung für Produkt 4', price: '39.99', image: 'https://via.placeholder.com/150' },
-        { name: 'Produkt 5', brand: 'Marke E', description: 'Beschreibung für Produkt 5', price: '59.99', image: 'https://via.placeholder.com/150' },
-        { name: 'Produkt 6', brand: 'Marke F', description: 'Beschreibung für Produkt 6', price: '25.99', image: 'https://via.placeholder.com/150' },
-      ],
+      products: [], 
     };
+  },
+  created() {
+    this.fetchProducts(); 
+  },
+  methods: {
+    async fetchProducts() {
+      try {
+        const response = await fetch('http://localhost/code_online_shop/backend/products.php');
+        const data = await response.json(); 
+        console.log(data); 
+        this.products = data; 
+      } catch (error) {
+        console.error('Fehler beim Abrufen der Produkte:', error); 
+      }
+    },
   },
 };
 </script>
@@ -39,9 +47,25 @@ export default {
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
+  max-width: 100%; /* Beschränkt die Kartenbreite */
+  height: auto; /* Anpassung an den Inhalt */
 }
-p {
-  font-size: 0.9rem;
-  font-family: 'Roboto', sans-serif;
+
+.card img {
+  width: 100%;
+  height:auto; /* Verkleinert die Höhe des Bildes */
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 0.8rem; /* Weniger Padding für kompakteres Layout */
+}
+
+.card-title {
+  font-size: 0.9rem; /* Kleinere Schriftgröße */
+}
+
+.card-text {
+  font-size: 0.8rem; /* Kleinere Schriftgröße */
 }
 </style>
