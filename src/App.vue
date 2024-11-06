@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import carousel from './components/carousel.vue';
 import Infobar from './components/infobar.vue';
 import navigation from './components/navigation.vue';
+import carousel from './components/carousel.vue';
 import products from './components/products.vue';
 import Footer from './components/footer.vue';
 
