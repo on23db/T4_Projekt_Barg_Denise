@@ -73,8 +73,19 @@ export default {
   font-weight: 800;
 }
 
+/* Versteckt den Text (p) auf mobilen Geräten, aber behält die Position bei */
 .carousel-caption p {
   font-size: 1em;
+}
+
+@media (max-width: 768px) {
+  .carousel-caption p {
+    display: none;
+  }
+
+  .carousel-caption h5 {
+    font-size: 2em;
+  }
 }
 
 a.btn {
@@ -95,4 +106,5 @@ a.btn:hover {
   background-color: #FAB600;
   color: #ffffff;
 }
+
 </style>

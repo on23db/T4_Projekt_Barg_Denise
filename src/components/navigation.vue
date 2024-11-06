@@ -14,14 +14,8 @@
       <!-- Mittlerer Bereich: Menü-Links -->
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="produkteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Produkte
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="produkteDropdown">
-              <li><a class="dropdown-item" href="#">Produkt 1</a></li>
-              <li><a class="dropdown-item" href="#">Produkt 2</a></li>
-            </ul>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Produkte</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Unternehmen</a>
