@@ -1,9 +1,9 @@
 <?php
-header('Content-Type: application/json');  // Setzt den Header für JSON
+// Header um CORS zu ermöglichen
+header('Content-Type: application/json');  
 
-include('db_connection.php');  // Deine Datenbankverbindung einbinden
+include('db_connection.php');  
 
-// Überprüfen, ob die Verbindung tatsächlich noch geöffnet ist
 if ($conn->connect_error) {
     die("Verbindung fehlgeschlagen: " . $conn->connect_error);
 }

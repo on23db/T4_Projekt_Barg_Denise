@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="products">
     <h2>Unsere Produkte</h2>
     <div class="row">
       <div v-for="(product, index) in products" :key="index" class="col-6 col-md-4 col-lg-3 mb-3">
@@ -8,7 +8,7 @@
           <div class="card-body">
             <p class="card-text">{{ product.brand }}</p>
             <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.price }} €</p>
+            <p class="card-price">{{ product.price }} €</p>
           </div>
         </div>
       </div>
@@ -43,29 +43,42 @@ export default {
 </script>
 
 <style scoped>
+.products {
+  padding-top: 5rem; 
+  padding-bottom: 5rem; 
+}
+
 .card {
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  max-width: 100%; /* Beschränkt die Kartenbreite */
-  height: auto; /* Anpassung an den Inhalt */
+  max-width: 100%; 
+  height: auto; 
 }
 
 .card img {
   width: 100%;
-  height:auto; /* Verkleinert die Höhe des Bildes */
+  height:auto; 
   object-fit: cover;
 }
 
 .card-body {
-  padding: 0.8rem; /* Weniger Padding für kompakteres Layout */
+  padding: 0.8rem; 
 }
 
 .card-title {
-  font-size: 0.9rem; /* Kleinere Schriftgröße */
+  font-size: 1rem; 
 }
 
 .card-text {
-  font-size: 0.8rem; /* Kleinere Schriftgröße */
+  font-size: 0.8rem; 
+}
+.products h2 {
+  text-align: center; 
+}
+
+.card-price {
+  font-weight: bold; 
+  font-size: 1.2rem;
 }
 </style>

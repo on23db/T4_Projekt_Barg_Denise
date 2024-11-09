@@ -1,17 +1,18 @@
 <template>
   <div class="footer-content">
+    <div class="container-lg">
     <div class="row">
-      <div class="col-12 col-md-3 mb-4 mb-md-0">
+      <div class="col-12 col-md-3">
         <h5>HCM Kinzel</h5>
         <p>Entdecke <strong>Spiele</strong>, die Generationen verbinden, <strong>Wissen</strong> erweitern und Freude <strong>schenken</strong>.</p>
         <div class="social-icons d-flex justify-content-center justify-content-md-start">
-          <a href="#"><i class="bi bi-facebook"></i></a>
-          <a href="#"><i class="bi bi-twitter"></i></a>
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-youtube"></i></a>
+          <a href="https://www.youtube.com/user/HCMKinzel"><i class="bi bi-youtube"></i></a>
+          <a href="https://www.instagram.com/hcm_kinzel/"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.facebook.com/HCMKinzelGmbH/"><i class="bi bi-facebook"></i></a>
+          <a href="https://x.com/i/flow/login?redirect_after_login=%2Fhcm_kinzel"><i class="bi bi-twitter-x"></i></a>
         </div>
       </div>
-      <div class="col-12 col-md-3 mb-4 mb-md-0">
+      <div class="col-12 col-md-3">
         <h5>Shop Service</h5>
         <ul class="footer-links">
           <li><a href="#">Händler-Login</a></li>
@@ -19,7 +20,7 @@
           <li><a href="#">Kontakt</a></li>
         </ul>
       </div>
-      <div class="col-12 col-md-3 mb-4 mb-md-0">
+      <div class="col-12 col-md-3">
         <h5>Informationen</h5>
         <ul class="footer-links">
           <li><a href="#">Batterieentsorgung</a></li>
@@ -37,9 +38,10 @@
       </div>
     </div>
   </div>
-  <footer>
+  </div>
+  <div class="container-fluid">
       <p>&copy; 2024 HCM Kinzel GmbH</p>
-    </footer>
+  </div>
 </template>
 
 <script>
@@ -53,27 +55,33 @@ export default {
   background-color: #002B53;
   color: white;
   padding: 20px;
+  padding-top: 6vh;
+  padding-bottom: 6vh;
 }
 
-footer {
+
+.container-fluid {
   background-color: #001930;
   color: white;
   text-align: center;
-  padding: 10px;
+  padding: 1vh;
   font-size: 0.9rem;
 }
 
-.social-icons a {
+.social-icons i {
   color: white;
   background-color: #FF8A00;
-  padding: 5px;
+  padding: 8px;
+  margin-bottom: 20px;
   border-radius: 4px;
   margin-right: 10px;
-  display: inline-block;
-}
+  font-size: 1.5rem;
+  }
 
-.social-icons a:last-child {
-  margin-right: 0;
+.social-icons i:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #FAB600;
 }
 
 .footer-links {
@@ -95,16 +103,13 @@ footer {
   text-decoration: underline;
 }
 
-/* Anpassungen für mobile Geräte */
-@media (max-width: 768px) {
-  .footer-content .row {
-    text-align: center;
-  }
-  .footer-content .col-12 {
-    padding: 0;
-  }
-  .footer-content .col-md-3 {
-    margin-bottom: 20px;
-  }
+.col-md-3 {
+  margin-bottom: 40px;
+}
+
+.col-md-3 h5 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 </style>
