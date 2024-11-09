@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
+import Placeholder from './views/Placeholder.vue';
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login,
+  },
+  {
+    path: '/placeholder',
+    name: 'Placeholder',
+    component: Placeholder,
   },
 ];
 
