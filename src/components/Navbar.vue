@@ -1,5 +1,5 @@
-<!-- src/components/Navbar.vue -->
 <template>
+  <div class="information text-center">Spiel Essen 2024 – Wir sind dabei an Stand DB137! Jetzt Termine mit uns buchen!</div>
   <nav class="navbar navbar-expand-lg">
     <div class="container-lg">
       <!-- Linker Bereich: Logo -->
@@ -33,9 +33,9 @@
         </ul>
         <!-- Rechter Bereich: Icons -->
         <div class="d-flex">
-          <a href="#" class="me-3"><i class="bi bi-search"></i></a>
-          <a href="#" class="me-3"><i class="bi bi-person-circle"></i></a>
-          <a href="#"><i class="bi bi-bag"></i></a>
+          <router-link class="me-3" to="/"><i class="bi bi-search"></i></router-link>
+          <router-link class="me-3" to="/konto"><i class="bi bi-person-circle"></i></router-link>
+          <router-link class="me-3" to="/warenkorb"><i class="bi bi-bag"></i></router-link>
         </div>
       </div>
     </div>
@@ -49,9 +49,28 @@ export default {
 </script>
 
 <style scoped>
+.information {
+background-color: #F09118; 
+color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 6vh; 
+margin-bottom: 0px;
+font-size: 0.9rem;
+}
+
+@media (max-width: 576px) {
+.information {
+  font-size: 0.75rem; 
+  height: auto;       
+  padding: 10px;      
+}
+}
+
 nav {
   background-color: #ffffff; 
-  position: sticky;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand img {
