@@ -1,10 +1,11 @@
+<!-- src/components/Navbar.vue -->
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-lg">
       <!-- Linker Bereich: Logo -->
-      <a class="navbar-brand" href="#">
+     <router-link class="navbar-brand" to="/">
         <img src="/src/assets/Logo_RGB.png" alt="Logo">
-      </a>
+      </router-link>
 
       <!-- Toggler für mobile Ansicht -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,36 +15,36 @@
       <!-- Mittlerer Bereich: Menü-Links -->
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item">
-            <a class="nav-link" href="#">Produkte</a>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/product">Produkte</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Unternehmen</a>
+            <router-link class="nav-link" to="/unternehmen">Unternehmen</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Kataloge</a>
+            <router-link class="nav-link" to="/kataloge">Kataloge</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">News</a>
+            <router-link class="nav-link" to="/news">News</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Events</a>
+            <router-link class="nav-link" to="/events">Events</router-link>
           </li>
         </ul>
         <!-- Rechter Bereich: Icons -->
-      <div class="d-flex">
-        <a href="#" class="me-3"><i class="bi bi-search"></i></a>
-        <a href="#" class="me-3"><i class="bi bi-person-circle"></i></a>
-        <a href="#"><i class="bi bi-bag"></i></a>
+        <div class="d-flex">
+          <a href="#" class="me-3"><i class="bi bi-search"></i></a>
+          <a href="#" class="me-3"><i class="bi bi-person-circle"></i></a>
+          <a href="#"><i class="bi bi-bag"></i></a>
+        </div>
       </div>
     </div>
-      </div>   
   </nav>
 </template>
 
 <script>
 export default {
-  name: 'navigation',
+  name: 'Navbar',
 };
 </script>
 
