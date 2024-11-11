@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <Navbar />
+    <navbar />
 
     <!-- Hier ändern sich die Komponenten -->
     <router-view></router-view>
-
+    
     <newsletter />
     <Footer />
   </div>

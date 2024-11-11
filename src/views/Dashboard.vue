@@ -1,15 +1,15 @@
 <template>
-    <div>
-      <h1>Login-Seite</h1>
+    <div class="container-lg">
+      <h1>Dashboard</h1>
+      <Breadcrumbs />
     </div>
-    <Breadcrumbs />
   </template>
   
   <script>
 import Breadcrumbs from '@/components/breadcrumbs.vue';
 
   export default {
-    name: 'Login',
+    name: 'Dashboard',
     components: {
       Breadcrumbs,
     },

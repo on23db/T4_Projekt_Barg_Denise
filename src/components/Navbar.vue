@@ -1,9 +1,12 @@
 <template>
-  <div class="information container-fluid text-center">Spiel Essen 2024 – Wir sind dabei an Stand DB137! Jetzt Termine mit uns buchen!</div>
+  <div class="information container-fluid text-center">
+    Spiel Essen 2024 – Wir sind dabei an Stand DB137! Jetzt Termine mit uns buchen!
+  </div>
+  
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-lg">
       <!-- Linker Bereich: Logo -->
-     <router-link class="navbar-brand" to="/">
+      <router-link class="navbar-brand" to="/">
         <img src="/src/assets/Logo_RGB.png" alt="Logo">
       </router-link>
 
@@ -31,33 +34,55 @@
             <router-link class="nav-link" to="/placeholder">Events</router-link>
           </li>
         </ul>
+        
         <!-- Rechter Bereich: Icons -->
         <div class="d-flex">
           <router-link class="me-3" to="/"><i class="bi bi-search"></i></router-link>
-          <router-link class="me-3" to="/login"><i class="bi bi-person-circle"></i></router-link>
+          <a class="me-3" @click.prevent="openLoginPopup"><i class="bi bi-person-circle"></i></a>
           <router-link class="me-3" to="/warenkorb"><i class="bi bi-bag"></i></router-link>
         </div>
       </div>
     </div>
   </nav>
+
+  <!-- Popup-Komponente für Login -->
+  <Popup v-if="isLoginPopupVisible" @close="closeLoginPopup" />
 </template>
 
 <script>
+import Popup from './popup.vue';
+
 export default {
   name: 'Navbar',
+  components: {
+    Popup,
+  },
+  data() {
+    return {
+      isLoginPopupVisible: false,
+    };
+  },
+  methods: {
+    openLoginPopup() {
+      this.isLoginPopupVisible = true;
+    },
+    closeLoginPopup() {
+      this.isLoginPopupVisible = false;
+    },
+  },
 };
 </script>
 
 <style scoped>
 .information {
-background-color: #F09118; 
-color: white;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 5vh; 
-margin-bottom: 0px;
-font-size: 0.9rem;
+  background-color: #F09118; 
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh; 
+  margin-bottom: 0px;
+  font-size: 0.9rem;
 }
 
 nav {

@@ -5,7 +5,7 @@
         <!-- Überschrift linke Spalte -->
         <div class="col-lg">
           <h1>Newsletter</h1>
-          <p>Newsletter abonnieren und als Erstes von neuen Spielen, exklusiven Angeboten und spannenden Events erfahren. Bleibe immer auf dem Laufenden!</p>
+          <p>Newsletter abonnieren und als Erstes von neuen Spielen, exklusiven Angeboten und spannenden Events erfahren. <strong>Bleibe immer auf dem Laufenden!</strong></p>
         </div>
         
         <!-- Formular rechte Spalte -->
