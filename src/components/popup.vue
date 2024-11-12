@@ -35,7 +35,7 @@ export default {
     const formData = new FormData();
     formData.append("email", this.email);
     formData.append("password", this.password);
-    
+
     try {
       const response = await fetch('http://localhost/code_online_shop/backend/login.php', {
         method: 'POST',
@@ -43,10 +43,12 @@ export default {
       });
       const result = await response.json();
       
-      if (result.success) {
+      if (result.message === "Login erfolgreich!") {
         // Login erfolgreich
         console.log("Login erfolgreich");
-        this.$emit('close');
+        // Weiterleitung zum Dashboard
+        this.$router.push({ name: 'Dashboard' }); // Verwende den Namen der Route
+        this.$emit('close');  // Popup schließen
       } else {
         // Login fehlgeschlagen
         this.loginError = result.message || "Login fehlgeschlagen";
@@ -60,6 +62,7 @@ export default {
     this.$emit('close');
   }
 }
+
 };
 </script>
 
