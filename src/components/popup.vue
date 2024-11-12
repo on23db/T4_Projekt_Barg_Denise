@@ -4,8 +4,8 @@
       <h2>Login</h2>
       <form @submit.prevent="submitLogin">
         <div class="form-group">
-          <label for="username">E-Mail</label>
-          <input type="text" id="username" v-model="username" required />
+          <label for="email">E-Mail</label>
+          <input type="text" id="email" v-model="email" required />
         </div>
         <div class="form-group">
           <label for="password">Passwort</label>
@@ -24,44 +24,26 @@ export default {
   name: "Popup",
   data() {
     return {
-      username: "",
+      email: "",
       password: "",
-      loginError: "", // Fehlermeldung für den Login
-      isVisible: true, // Modal sichtbar machen
+      loginError: "", 
+      isVisible: true,
     };
   },
   methods: {
-    close() {
-      this.$emit("close");
-    },
     async submitLogin() {
-      // Übertragen der Daten an login.php
-      try {
-        const formData = new FormData();
-        formData.append("username", this.username);
-        formData.append("password", this.password);
-
-        const response = await fetch("http://localhost/projektordner/login.php", {
-          method: "POST",
-          body: formData,
-        });
-
-        const data = await response.text();
-
-        if (data.includes("Login fehlgeschlagen")) {
-          this.loginError = "Login fehlgeschlagen. Bitte überprüfen Sie Ihre Daten.";
-        } else {
-          // Erfolgreicher Login, Modal schließen
-          this.close();
-          window.location.href = "/dashboard";
-        }
-      } catch (error) {
-        console.error("Fehler beim Login:", error);
-        this.loginError = "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.";
-      }
+      console.log("Eingegebene Daten:", { email: this.email, password: this.password }); // Ausgabe der Daten zur Überprüfung
+      
+      const formData = new FormData();
+      formData.append("email", this.email);
+      formData.append("password", this.password);
     },
+    close() {
+      this.isVisible = false;
+    }
   },
-};
+  }
+
 </script>
 
 <style scoped>

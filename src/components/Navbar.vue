@@ -38,7 +38,7 @@
         <!-- Rechter Bereich: Icons -->
         <div class="d-flex">
           <router-link class="me-3" to="/"><i class="bi bi-search"></i></router-link>
-          <a class="me-3" @click.prevent="openLoginPopup"><i class="bi bi-person-circle"></i></a>
+          <a class="me-3" @click.p="openLoginPopup"><i class="bi bi-person-circle"></i></a>
           <router-link class="me-3" to="/warenkorb"><i class="bi bi-bag"></i></router-link>
         </div>
       </div>
@@ -63,14 +63,17 @@ export default {
     };
   },
   methods: {
-    openLoginPopup() {
+  openLoginPopup() {
+    this.isLoginPopupVisible = false;
+    this.$nextTick(() => {
       this.isLoginPopupVisible = true;
-    },
-    closeLoginPopup() {
-      this.isLoginPopupVisible = false;
-    },
+    });
   },
-};
+  closeLoginPopup() {
+    this.isLoginPopupVisible = false;
+  },
+}
+}
 </script>
 
 <style scoped>
