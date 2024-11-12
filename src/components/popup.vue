@@ -31,19 +31,36 @@ export default {
     };
   },
   methods: {
-    async submitLogin() {
-      console.log("Eingegebene Daten:", { email: this.email, password: this.password }); // Ausgabe der Daten zur Überprüfung
+  async submitLogin() {
+    const formData = new FormData();
+    formData.append("email", this.email);
+    formData.append("password", this.password);
+    
+    try {
+      const response = await fetch('http://localhost/code_online_shop/backend/login.php', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await response.json();
       
-      const formData = new FormData();
-      formData.append("email", this.email);
-      formData.append("password", this.password);
-    },
-    close() {
-      this.isVisible = false;
+      if (result.success) {
+        // Login erfolgreich
+        console.log("Login erfolgreich");
+        this.$emit('close');
+      } else {
+        // Login fehlgeschlagen
+        this.loginError = result.message || "Login fehlgeschlagen";
+      }
+    } catch (error) {
+      console.error("Fehler beim Login:", error);
+      this.loginError = "Ein Fehler ist aufgetreten.";
     }
   },
+  close() {
+    this.$emit('close');
   }
-
+}
+};
 </script>
 
 <style scoped>
