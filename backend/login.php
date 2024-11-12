@@ -1,8 +1,6 @@
 <?php
-// Header um CORS zu ermöglichen
-header('Content-Type: application/json');  
-
-include('db_connection.php');  
+session_start();
+require('db_connection.php');
 
 if ($conn->connect_error) {
     die("Verbindung fehlgeschlagen: " . $conn->connect_error);
@@ -22,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Überprüfen, ob das Passwort korrekt ist
     if ($hashedPassword && password_verify($password, $hashedPassword)) {
+        $_SESSION['email'] = $email;  // Speichert die E-Mail in der Session
         echo json_encode(["message" => "Login erfolgreich!"]);
-        // Hier könntest du eine Session starten oder den Benutzer weiterleiten
     } else {
         echo json_encode(["message" => "Ungültige E-Mail oder Passwort."]);
     }

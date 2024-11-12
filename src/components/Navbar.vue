@@ -19,7 +19,7 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link class="nav-link" to="/product">Produkte</router-link>
+            <router-link class="nav-link" to="/placeholder">Produkte</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/placeholder">Unternehmen</router-link>
@@ -39,7 +39,7 @@
         <div class="d-flex">
           <router-link class="me-3" to="/"><i class="bi bi-search"></i></router-link>
           <a class="me-3" @click.p="openLoginPopup"><i class="bi bi-person-circle"></i></a>
-          <router-link class="me-3" to="/warenkorb"><i class="bi bi-bag"></i></router-link>
+          <router-link class="me-3" to="/placeholder"><i class="bi bi-bag"></i></router-link>
         </div>
       </div>
     </div>

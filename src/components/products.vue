@@ -32,7 +32,6 @@ export default {
       try {
         const response = await fetch('http://localhost/code_online_shop/backend/products.php');
         const data = await response.json(); 
-        console.log(data); 
         this.products = data; 
       } catch (error) {
         console.error('Fehler beim Abrufen der Produkte:', error); 

@@ -25,7 +25,9 @@ import Breadcrumbs from '@/components/breadcrumbs.vue';
     components: {
       Breadcrumbs,
     },
+    
   };
+  
   </script>
   
   <style scoped>
