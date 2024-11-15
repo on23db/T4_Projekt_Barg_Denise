@@ -1,19 +1,49 @@
 <template>
   <div v-if="isVisible" class="modal-overlay" @click.self="close">
     <div class="modal-content">
-      <h2>Login</h2>
-      <form @submit.prevent="submitLogin">
+      <h2>{{ isRegistering ? 'Registrieren' : 'Login' }}</h2>
+      
+      <!-- Login Formular -->
+      <form v-if="!isRegistering" @submit.prevent="submitLogin">
         <div class="form-group">
           <label for="email">E-Mail</label>
-          <input type="text" id="email" v-model="email" required />
+          <input type="email" id="email" v-model="email" required />
         </div>
         <div class="form-group">
           <label for="password">Passwort</label>
           <input type="password" id="password" v-model="password" required />
         </div>
         <button type="submit" class="submit-btn">Anmelden</button>
-        <button type="button" class="close-btn" @click="close">Schließen</button>
+        <p>Noch kein Konto? <a href="#" @click.prevent="toggleForm">Registrieren</a></p>
       </form>
+
+      <!-- Registrierungsformular -->
+      <form v-if="isRegistering" @submit.prevent="submitRegister">
+        <div class="form-group">
+          <label for="firstname">Vorname</label>
+          <input type="text" id="firstname" v-model="firstname" required />
+        </div>
+        <div class="form-group">
+          <label for="lastname">Nachname</label>
+          <input type="text" id="lastname" v-model="lastname" required />
+        </div>
+        <div class="form-group">
+          <label for="email">E-Mail</label>
+          <input type="email" id="email" v-model="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Passwort</label>
+          <input type="password" id="password" v-model="password" required />
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Passwort bestätigen</label>
+          <input type="password" id="confirmPassword" v-model="confirmPassword" required />
+        </div>
+        <button type="submit" class="submit-btn">Registrieren</button>
+        <p>Bereits ein Konto? <a href="#" @click.prevent="toggleForm">Anmelden</a></p>
+      </form>
+
+      <button type="button" class="close-btn" @click="close">Schließen</button>
       <p v-if="loginError" class="error-message">{{ loginError }}</p>
     </div>
   </div>
@@ -26,45 +56,83 @@ export default {
     return {
       email: "",
       password: "",
-      loginError: "", 
+      confirmPassword: "",
+      firstname: "",
+      lastname: "",
+      loginError: "",
       isVisible: true,
+      isRegistering: false, // Zustand für Login/Registrierung wechseln
     };
   },
   methods: {
-  async submitLogin() {
-    const formData = new FormData();
-    formData.append("email", this.email);
-    formData.append("password", this.password);
+    // Wechselt zwischen Login und Registrierung
+    toggleForm() {
+      this.isRegistering = !this.isRegistering;
+    },
+    async submitLogin() {
+      const formData = new FormData();
+      formData.append("email", this.email);
+      formData.append("password", this.password);
 
-    try {
-      const response = await fetch('http://localhost/code_online_shop/backend/login.php', {
-        method: 'POST',
-        body: formData,
-        credentials: 'include',
-      });
-      
-      const result = await response.json();
-      
-      if (result.message === "Login erfolgreich!") {
-        // Login erfolgreich
-        console.log("Login erfolgreich");
-        // Weiterleitung zum Dashboard
-        this.$router.push({ name: 'Dashboard' }); // Verwende den Namen der Route
-        this.$emit('close');  // Popup schließen
-      } else {
-        // Login fehlgeschlagen
-        this.loginError = result.message || "Login fehlgeschlagen";
+      try {
+        const response = await fetch('http://localhost/code_online_shop/backend/login.php', {
+          method: 'POST',
+          body: formData,
+          credentials: 'include',
+        });
+        
+        const result = await response.json();
+        
+        if (result.message === "Login erfolgreich!") {
+          console.log("Login erfolgreich");
+          this.$router.push({ name: 'Dashboard' });
+          this.$emit('close');
+        } else {
+          this.loginError = result.message || "Login fehlgeschlagen";
+        }
+      } catch (error) {
+        console.error("Fehler beim Login:", error);
+        this.loginError = "Ein Fehler ist aufgetreten.";
       }
-    } catch (error) {
-      console.error("Fehler beim Login:", error);
-      this.loginError = "Ein Fehler ist aufgetreten.";
-    }
-  },
-  close() {
-    this.$emit('close');
-  }
-}
+    },
 
+    async submitRegister() {
+      if (this.password !== this.confirmPassword) {
+        this.loginError = "Passwörter stimmen nicht überein.";
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("firstname", this.firstname);
+      formData.append("lastname", this.lastname);
+      formData.append("email", this.email);
+      formData.append("password", this.password);
+
+      try {
+        const response = await fetch('http://localhost/code_online_shop/backend/register.php', {
+          method: 'POST',
+          body: formData,
+          credentials: 'include',
+        });
+        
+        const result = await response.json();
+        
+        if (result.message === "Registrierung erfolgreich!") {
+          console.log("Registrierung erfolgreich");
+          this.toggleForm(); // Wechsel zu Login nach erfolgreicher Registrierung
+        } else {
+          this.loginError = result.message || "Registrierung fehlgeschlagen";
+        }
+      } catch (error) {
+        console.error("Fehler bei der Registrierung:", error);
+        this.loginError = "Ein Fehler ist aufgetreten.";
+      }
+    },
+
+    close() {
+      this.$emit('close');
+    }
+  }
 };
 </script>
 
