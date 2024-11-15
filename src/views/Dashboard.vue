@@ -7,14 +7,18 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Mein Account</h5>
+                <button type="button" class="logout-btn" @click="logout">Logout</button>
               </div>
             </div>
           </div>
           <div class="col-md-9">
-            <h5>Übersicht</h5>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Übersicht</h5>
+            </div>
+            </div>
           </div>
         </div>
-    <button type="button" class="logout-btn" @click="logout">Logout</button>
   </div>
 </template>
 
@@ -78,5 +82,21 @@ export default {
 .row {
   margin-top: 3vh;
   margin-bottom: 5vh;
+}
+.breadcrumbs {
+  margin-top: 3vh;
+}
+.logout-btn {
+  background-color: #f09118;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.logout-btn:hover {
+  background-color: #d57d0b;
 }
 </style>

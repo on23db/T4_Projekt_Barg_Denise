@@ -16,10 +16,7 @@ export default {
 .breadcrumb {
   margin-top: 2rem;
 }
-.breadcrumb-item {
-  display: inline-block;
-  margin-right: 0.5rem;
-}
+
 .breadcrumb-item.active {
   text-decoration: underline;
 }

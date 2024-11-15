@@ -6,12 +6,10 @@
       <!-- Login Formular -->
       <form v-if="!isRegistering" @submit.prevent="submitLogin">
         <div class="form-group">
-          <label for="email">E-Mail</label>
-          <input type="email" id="email" v-model="email" required />
+          <input type="email" id="email" placeholder="E-Mail" v-model="email" required />
         </div>
         <div class="form-group">
-          <label for="password">Passwort</label>
-          <input type="password" id="password" v-model="password" required />
+          <input type="password" id="password" placeholder="Passwort" v-model="password" required />
         </div>
         <button type="submit" class="submit-btn">Anmelden</button>
         <p>Noch kein Konto? <a href="#" @click.prevent="toggleForm">Registrieren</a></p>
@@ -20,24 +18,19 @@
       <!-- Registrierungsformular -->
       <form v-if="isRegistering" @submit.prevent="submitRegister">
         <div class="form-group">
-          <label for="firstname">Vorname</label>
-          <input type="text" id="firstname" v-model="firstname" required />
+          <input type="text" id="firstname" placeholder="Vorname" v-model="firstname" required />
         </div>
         <div class="form-group">
-          <label for="lastname">Nachname</label>
-          <input type="text" id="lastname" v-model="lastname" required />
+          <input type="text" id="lastname" placeholder="Nachname" v-model="lastname" required />
         </div>
         <div class="form-group">
-          <label for="email">E-Mail</label>
-          <input type="email" id="email" v-model="email" required />
+          <input type="email" id="email" placeholder="E-Mail" v-model="email" required />
         </div>
         <div class="form-group">
-          <label for="password">Passwort</label>
-          <input type="password" id="password" v-model="password" required />
+          <input type="password" id="password" placeholder="Passwort" v-model="password" required />
         </div>
         <div class="form-group">
-          <label for="confirmPassword">Passwort bestätigen</label>
-          <input type="password" id="confirmPassword" v-model="confirmPassword" required />
+          <input type="password" id="confirmPassword" placeholder="Passwort wiederholen" v-model="confirmPassword" required />
         </div>
         <button type="submit" class="submit-btn">Registrieren</button>
         <p>Bereits ein Konto? <a href="#" @click.prevent="toggleForm">Anmelden</a></p>
