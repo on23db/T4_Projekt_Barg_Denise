@@ -14,6 +14,7 @@
             <h5>Übersicht</h5>
           </div>
         </div>
+        <button type="button" class="logout-btn" @click="close">Logout</button>
     </div>
   </template>
   

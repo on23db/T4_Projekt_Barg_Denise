@@ -1,10 +1,6 @@
 <?php
-session_start();
+header('Content-Type: application/json');
 require('db_connection.php');
-
-if ($conn->connect_error) {
-    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
-}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -20,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Überprüfen, ob das Passwort korrekt ist
     if ($hashedPassword && password_verify($password, $hashedPassword)) {
+        session_start(); // Starte die benutzerdefinierte Session
         $_SESSION['email'] = $email;  // Speichert die E-Mail in der Session
         echo json_encode(["message" => "Login erfolgreich!"]);
     } else {

@@ -39,8 +39,10 @@ export default {
     try {
       const response = await fetch('http://localhost/code_online_shop/backend/login.php', {
         method: 'POST',
-        body: formData
+        body: formData,
+        credentials: 'include',
       });
+      
       const result = await response.json();
       
       if (result.message === "Login erfolgreich!") {
