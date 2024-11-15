@@ -14,22 +14,44 @@
             <h5>Übersicht</h5>
           </div>
         </div>
-        <button type="button" class="logout-btn" @click="close">Logout</button>
+        <button type="button" class="logout-btn" @click="logout">Logout</button>
     </div>
   </template>
   
   <script>
-import Breadcrumbs from '@/components/breadcrumbs.vue';
-
+  import Breadcrumbs from '@/components/breadcrumbs.vue';
+  import { useRouter } from 'vue-router'; // Importiere den Router
+  
   export default {
     name: 'Dashboard',
     components: {
       Breadcrumbs,
     },
-    
-  };
+    methods: {
+      async logout() {
+        try {
+          // Sende die Anfrage an logout.php
+          const response = await fetch('http://localhost/code_online_shop/backend/logout.php', {
+            method: 'GET',
+            credentials: 'include',
+          });
   
+          const result = await response.json();
+          
+          if (result.message === "Logout erfolgreich!") {
+            // Nach erfolgreichem Logout, leite den Benutzer zur Startseite
+            this.$router.push({ name: 'Home' }); // 'Home' ist der Name der Startseite im Vue-Router
+          } else {
+            console.error("Logout fehlgeschlagen:", result.message);
+          }
+        } catch (error) {
+          console.error("Fehler beim Logout:", error);
+        }
+      },
+    },
+  };
   </script>
+  
   
   <style scoped>
   .row {
