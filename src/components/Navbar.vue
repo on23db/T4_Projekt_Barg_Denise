@@ -38,16 +38,17 @@
         <!-- Rechter Bereich: Icons -->
         <div class="d-flex">
           <router-link class="me-3" to="/"><i class="bi bi-search"></i></router-link>
-          <a class="me-3" @click.p="openLoginPopup"><i class="bi bi-person-circle"></i></a>
+          <a class="me-3" @click="toggleLoginPopup"><i class="bi bi-person-circle"></i></a>
           <router-link class="me-3" to="/placeholder"><i class="bi bi-bag"></i></router-link>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- Popup-Komponente für Login -->
+  <!-- Popup-Komponente für Login, nur wenn Popup angezeigt werden soll -->
   <Popup v-if="isLoginPopupVisible" @close="closeLoginPopup" />
 </template>
+
 
 <script>
 import Popup from './popup.vue';
@@ -62,19 +63,37 @@ export default {
       isLoginPopupVisible: false,
     };
   },
+  created() {
+    // Hier prüfen wir, ob der Nutzer bereits eingeloggt ist
+    const userLoggedIn = this.checkUserLoggedIn();
+    if (userLoggedIn) {
+      // Wenn der Nutzer eingeloggt ist, kein Popup anzeigen
+      this.isLoginPopupVisible = false;
+    }
+  },
   methods: {
-  openLoginPopup() {
-    this.isLoginPopupVisible = false;
-    this.$nextTick(() => {
-      this.isLoginPopupVisible = true;
-    });
+    // Überprüft, ob der Nutzer eingeloggt ist
+    checkUserLoggedIn() {
+      return document.cookie.includes('PHPSESSID'); 
+    },
+
+    toggleLoginPopup() {
+      // Wenn der Nutzer eingeloggt ist, zum Dashboard weiterleiten
+      if (this.checkUserLoggedIn()) {
+        this.$router.push('/dashboard'); 
+      } else {
+        // Nur das Popup öffnen, wenn der Nutzer nicht eingeloggt ist
+        this.isLoginPopupVisible = !this.isLoginPopupVisible;
+      }
+    },
+
+    closeLoginPopup() {
+      this.isLoginPopupVisible = false;
+    },
   },
-  closeLoginPopup() {
-    this.isLoginPopupVisible = false;
-  },
-}
 }
 </script>
+
 
 <style scoped>
 .information {
