@@ -36,6 +36,7 @@
                     </div>
                   </div>
                 </div>
+                <product_editor />
               </div>
             </div>
             <!-- User-spezifische Inhalte -->
@@ -54,10 +55,12 @@
 
 <script>
 import Breadcrumbs from '@/components/breadcrumbs.vue';
+import product_editor from '@/components/product_editor.vue';
 export default {
   name: 'Dashboard',
   components: {
     Breadcrumbs,
+    product_editor,
   },
   data() {
     return {
