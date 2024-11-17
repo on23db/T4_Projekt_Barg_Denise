@@ -1,26 +1,56 @@
 <template>
   <div class="container-lg">
-      <Breadcrumbs />
+    <Breadcrumbs />
     <h1>Hallo {{ userName }}!</h1>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Mein Account</h5>
-                <button type="button" class="logout-btn" @click="logout">Logout</button>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Mein Account</h5>
+            <button type="button" class="logout-btn" @click="logout">Logout</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Übersicht</h5>
+            <!-- Admin-spezifische Inhalte -->
+            <div v-if="userisAdmin">
+              <div class="row">
+                <!-- Erste Karte -->
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h6>Bestellungen</h6>
+                      <p>Du hast (Anzahl) Bestellungen. Gut gemacht, alles verschickt! / Verschicke die offenen Bestellungen.</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Zweite Karte -->
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h6>Newsletter</h6>
+                      <p>Du hast (Anzahl) Newsletter Anmeldungen.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-9">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Übersicht</h5>
-            </div>
+            <!-- User-spezifische Inhalte -->
+            <div v-else>
+              <h6>User-Bereich</h6>
+              <p>Willkommen im Dashboard! Hier kannst du deine Daten einsehen.</p>
             </div>
           </div>
         </div>
+      </div>
+    </div>
   </div>
 </template>
+
+
 
 <script>
 import Breadcrumbs from '@/components/breadcrumbs.vue';
