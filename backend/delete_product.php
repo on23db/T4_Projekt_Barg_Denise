@@ -1,11 +1,8 @@
 <?php
-// Verbindung zur Datenbank herstellen
-require_once 'db_connection.php';
-
+include 'db_connection.php';
 header("Content-Type: application/json");
 
 try {
-    // SKU aus der URL auslesen
     if (!isset($_GET['sku'])) {
         throw new Exception("Keine SKU angegeben.");
     }

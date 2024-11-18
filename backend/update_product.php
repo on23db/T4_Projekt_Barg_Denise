@@ -1,7 +1,5 @@
 <?php
-// Verbindung zur Datenbank herstellen
-require_once 'db_connection.php';
-
+include 'db_connection.php';
 header("Content-Type: application/json");
 
 try {
