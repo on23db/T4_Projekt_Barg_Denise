@@ -13,7 +13,7 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
-    meta: { requiresAuth: true }, // Meta-Information für Authentifizierung
+    meta: { requiresAuth: true }, // Authentifizierung
   },
   {
     path: '/placeholder',

@@ -1,6 +1,6 @@
 <template>
     <div class="product_editor">
-      <h2>Produktverwaltung</h2>
+      <h5>Produktverwaltung</h5>
   
       <!-- Fehlernachricht -->
       <div v-if="errorMessage" class="error-message">
@@ -160,18 +160,13 @@
   </script>
   
   <style scoped>
-  .product_editor {
-    padding: 2rem;
-  }
-  
   .table {
     width: 100%;
-    border-collapse: collapse;
+
   }
   
   .table th,
   .table td {
-    padding: 0.8rem;
     text-align: left;
   }
   

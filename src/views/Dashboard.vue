@@ -3,40 +3,38 @@
     <Breadcrumbs />
     <h1>Hallo {{ userName }}!</h1>
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-2">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Mein Account</h5>
-            <button type="button" class="logout-btn" @click="logout">Logout</button>
+            <div class="d-flex flex-column">
+              <router-link to="#" class="product-btn" @click="showOverviewAndNavigate">Übersicht</router-link>
+              <router-link to="#" class="product-btn" @click="showProductsAndNavigate">Produkte</router-link>
+              <router-link to="#" class="product-btn" @click="showCustomersAndNavigate">Kunden</router-link>
+              <router-link to="#" class="product-btn" @click="showOrdersAndNavigate">Bestellungen</router-link>
+              <button type="button" class="logout-btn" @click="logout">Logout</button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-10">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Übersicht</h5>
             <!-- Admin-spezifische Inhalte -->
             <div v-if="userisAdmin">
-              <div class="row">
-                <!-- Erste Karte -->
-                <div class="col-md-6">
-                  <div class="card">
-                    <div class="card-body">
-                      <h6>Bestellungen</h6>
-                      <p>Du hast (Anzahl) Bestellungen. Gut gemacht, alles verschickt! / Verschicke die offenen Bestellungen.</p>
-                    </div>
-                  </div>
+              <div class="row-Admin">
+                <div v-if="showOverview">
+                  <Overview />
                 </div>
-                <!-- Zweite Karte -->
-                <div class="col-md-6">
-                  <div class="card">
-                    <div class="card-body">
-                      <h6>Newsletter</h6>
-                      <p>Du hast (Anzahl) Newsletter Anmeldungen.</p>
-                    </div>
-                  </div>
+                <div v-if="showProducts">
+                  <product_editor />
                 </div>
-                <product_editor />
+                <div v-if="showOrders">
+                  <Orders />
+                </div>
+                <div v-if="showCustomers">
+                  <Customers />
+                </div>
               </div>
             </div>
             <!-- User-spezifische Inhalte -->
@@ -51,21 +49,30 @@
   </div>
 </template>
 
-
-
 <script>
 import Breadcrumbs from '@/components/breadcrumbs.vue';
+import Overview from '@/components/overview.vue';
+import Orders from '@/components/orders.vue';
 import product_editor from '@/components/product_editor.vue';
+import Customers from '@/components/customers.vue';
+
 export default {
   name: 'Dashboard',
   components: {
     Breadcrumbs,
     product_editor,
+    Overview,
+    Orders,
+    Customers
   },
   data() {
     return {
-      userName: '', // Name des Users
-      userisAdmin: '', // Rolle des Users
+      userName: '',  // Name des Users
+      userisAdmin: '',  // Rolle des Users
+      showOverview: true,  // Standardmäßig auf Overview setzen
+      showProducts: false, // Steuert die Anzeige der Produkte
+      showOrders: false,   // Steuert die Anzeige der Bestellungen
+      showCustomers: false, // Steuert die Anzeige der Kunden
     };
   },
   async mounted() {
@@ -107,10 +114,39 @@ export default {
         console.error("Fehler beim Logout:", error);
       }
     },
+    // Methode zum Umschalten der Ansicht auf Overview und Navigation
+    showOverviewAndNavigate() {
+      this.showOverview = true;
+      this.showProducts = false;
+      this.showOrders = false;
+      this.showCustomers = false;
+
+    },
+    // Methode zum Umschalten der Ansicht auf Produkte und Navigation
+    showProductsAndNavigate() {
+      this.showProducts = true;
+      this.showOverview = false;
+      this.showOrders = false;
+      this.showCustomers = false;
+    },
+    // Methode zum Umschalten der Ansicht auf Bestellungen und Navigation
+    showOrdersAndNavigate() {
+      this.showOrders = true;
+      this.showOverview = false;
+      this.showProducts = false;
+      this.showCustomers = false;
+    },
+    // Methode zum Umschalten der Ansicht auf Kunden und Navigation
+    showCustomersAndNavigate() {
+      this.showCustomers = true;
+      this.showOverview = false;
+      this.showProducts = false;
+      this.showOrders = false;
+    },
   },
 };
-</script>
 
+</script>
 <style scoped>
 .row {
   margin-top: 3vh;
@@ -127,9 +163,27 @@ export default {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 1rem;
+  max-width: fit-content;
 }
 
 .logout-btn:hover {
   background-color: #d57d0b;
 }
+
+.product-btn {
+  color: rgb(21, 21, 21);
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  text-decoration: none;
+  border-bottom: #d1d1d1 1px solid;
+  padding: 0.1rem 0;
+  min-width: 80%;
+  padding-bottom: 0.7rem;
+}
+
+.product-btn:hover {
+  text-decoration: underline;
+}
+
 </style>
