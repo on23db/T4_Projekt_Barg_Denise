@@ -1,6 +1,7 @@
 <template>
   <div class="products">
-    <h2>Unsere Produkte</h2>
+    <h2>Unsere Spielwelt im Überblick✨</h2>
+    <p>Stöbere durch unsere <mark>abwechslungsreiche Auswahl</mark> an Produkten! Wir bieten dir nicht nur spannende Brett- und Kartenspiele, sondern auch kreative Holzpuzzles und bezaubernde Puppen. Finde das perfekte Spielzeug für jede Altersgruppe und Gelegenheit.</p>
     <div class="row">
       <div v-for="(product, index) in products" :key="index" class="col-6 col-md-4 col-lg-3 mb-3">
         <div class="card">
@@ -77,8 +78,16 @@ export default {
 .card-text {
   font-size: 0.8rem; 
 }
-.products h2 {
-  text-align: center; 
+ h2 {
+  text-align: left; 
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+p {
+  text-align: left; 
+  font-size: 1rem;
+  padding-bottom: 5vh;
 }
 
 .card-price {
