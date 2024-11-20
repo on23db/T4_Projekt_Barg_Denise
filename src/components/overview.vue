@@ -12,12 +12,12 @@
         <div class="card-label">Produkte</div>
       </div>
       <div class="card">
-        <div class="card-value">{{ totalOrders }}</div>
-        <div class="card-label">Bestellungen</div>
-      </div>
-      <div class="card">
         <div class="card-value">{{ totalCustomers }}</div>
         <div class="card-label">Kunden</div>
+      </div>
+      <div class="card">
+        <div class="card-value">{{ totalOrders }}</div>
+        <div class="card-label">Bestellungen</div>
       </div>
     </div>
   </div>
