@@ -9,39 +9,10 @@
             <h5 class="card-title">Mein Account</h5>
             <div class="d-flex flex-column">
               <router-link to="#" class="product-btn" @click="showOverviewAndNavigate">Übersicht</router-link>
-              <!-- Admin-spezifische Links -->
-              <router-link
-                v-if="userisAdmin"
-                to="#"
-                class="product-btn"
-                @click="showProductsAndNavigate"
-              >
-                Produkte
-              </router-link>
-              <router-link
-                v-if="userisAdmin"
-                to="#"
-                class="product-btn"
-                @click="showCustomersAndNavigate"
-              >
-                Kunden
-              </router-link>
-              <!-- User-spezifische Links -->
-              <router-link
-                v-if="!userisAdmin"
-                to="#"
-                class="product-btn"
-                @click="showAddressesAndNavigate"
-              >
-                Adressen
-              </router-link>
-              <router-link
-                to="#"
-                class="product-btn"
-                @click="showOrdersAndNavigate"
-              >
-                Bestellungen
-              </router-link>
+              <router-link v-if="userisAdmin" to="#" class="product-btn" @click="showProductsAndNavigate">Produkte</router-link>
+              <router-link v-if="userisAdmin" to="#" class="product-btn" @click="showCustomersAndNavigate">Kunden</router-link>
+              <router-link v-if="!userisAdmin" to="#" class="product-btn" @click="showAddressesAndNavigate">Adressen</router-link>
+              <router-link to="#" class="product-btn" @click="showOrdersAndNavigate">Bestellungen</router-link>
               <button type="button" class="logout-btn" @click="logout">Logout</button>
             </div>
           </div>
@@ -50,35 +21,21 @@
       <div class="col-md-10">
         <div class="card">
           <div class="card-body">
-            <!-- Admin-spezifische Inhalte -->
             <div v-if="userisAdmin">
               <div class="row-Admin">
-                <div v-if="showOverview">
-                  <Overview />
-                </div>
-                <div v-if="showProducts">
-                  <product_editor />
-                </div>
-                <div v-if="showOrders">
-                  <Orders />
-                </div>
-                <div v-if="showCustomers">
-                  <Customers />
-                </div>
+                <div v-if="showOverview"><Overview /></div>
+                <div v-if="showProducts"><product_editor /></div>
+                <div v-if="showOrders"><Orders /></div>
+                <div v-if="showCustomers"><Customers /></div>
               </div>
             </div>
-            <!-- User-spezifische Inhalte -->
             <div v-else>
               <div v-if="showOverview">
                 <h6>User-Bereich</h6>
                 <p>Willkommen im Dashboard! Hier kannst du deine Daten einsehen.</p>
               </div>
-              <div v-if="showOrders">
-                <Orders />
-              </div>
-              <div v-if="showAddresses">
-                <p>Hier können deine gespeicherten Adressen verwaltet werden.</p>
-              </div>
+              <div v-if="showOrders"><Orders /></div>
+              <div v-if="showAddresses"><p>Hier können deine gespeicherten Adressen verwaltet werden.</p></div>
             </div>
           </div>
         </div>
@@ -105,13 +62,13 @@ export default {
   },
   data() {
     return {
-      userName: '', // Name des Users
-      userisAdmin: '', // Rolle des Users
-      showOverview: true, // Standardmäßig auf Overview setzen
-      showProducts: false, // Steuert die Anzeige der Produkte
-      showOrders: false, // Steuert die Anzeige der Bestellungen
-      showCustomers: false, // Steuert die Anzeige der Kunden
-      showAddresses: false, // Steuert die Anzeige der Adressen (User-spezifisch)
+      userName: '',
+      userisAdmin: '',
+      showOverview: true,
+      showProducts: false,
+      showOrders: false,
+      showCustomers: false,
+      showAddresses: false,
     };
   },
   async mounted() {
@@ -123,9 +80,7 @@ export default {
       const result = await response.json();
 
       if (result.success) {
-        // Setzt die Rolle in der Komponente
         this.userisAdmin = result.isAdmin;
-        // Setzt den Namen in der Komponente
         this.userName = result.firstname;
       } else {
         console.error("Fehler beim Abrufen der Daten:", result.message);
@@ -153,32 +108,26 @@ export default {
         console.error("Fehler beim Logout:", error);
       }
     },
-    // Methode zum Umschalten der Ansicht auf Overview und Navigation
     showOverviewAndNavigate() {
       this.resetTabs();
       this.showOverview = true;
     },
-    // Methode zum Umschalten der Ansicht auf Produkte und Navigation
     showProductsAndNavigate() {
       this.resetTabs();
       this.showProducts = true;
     },
-    // Methode zum Umschalten der Ansicht auf Bestellungen und Navigation
     showOrdersAndNavigate() {
       this.resetTabs();
       this.showOrders = true;
     },
-    // Methode zum Umschalten der Ansicht auf Kunden und Navigation
     showCustomersAndNavigate() {
       this.resetTabs();
       this.showCustomers = true;
     },
-    // Methode zum Umschalten der Ansicht auf Adressen und Navigation
     showAddressesAndNavigate() {
       this.resetTabs();
       this.showAddresses = true;
     },
-    // Tabs zurücksetzen
     resetTabs() {
       this.showOverview = false;
       this.showProducts = false;
@@ -208,11 +157,9 @@ export default {
   margin-top: 1rem;
   max-width: fit-content;
 }
-
 .logout-btn:hover {
   background-color: #d57d0b;
 }
-
 .product-btn {
   color: rgb(21, 21, 21);
   border: none;
@@ -224,8 +171,8 @@ export default {
   min-width: 80%;
   padding-bottom: 0.7rem;
 }
-
 .product-btn:hover {
   text-decoration: underline;
 }
+
 </style>
