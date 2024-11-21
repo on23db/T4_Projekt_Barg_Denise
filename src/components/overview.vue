@@ -62,7 +62,6 @@ export default {
 <style scoped>
 .overview {
   text-align: left;
-
 }
 
 .error-message {
@@ -85,12 +84,12 @@ export default {
 }
 
 .card {
-  border: 1px solid #cfcfcf;
+  border: 1px solid #f092188d;
   border-radius: 10px;
   padding: 20px;
   flex: 1;
   text-align: center;
-  box-shadow: 0 6px 7px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 7px rgba(0, 0, 0, 0.086);
   min-width: 150px;
   margin: 0 10px;
   background-color: #fcf1e2
@@ -105,7 +104,7 @@ export default {
 .card-label {
   margin-top: 10px;
   font-size: 1.2rem;
-  color: #333;
+  color: #f09118;
 }
 
 </style>
