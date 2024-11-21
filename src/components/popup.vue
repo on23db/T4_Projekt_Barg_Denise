@@ -178,6 +178,7 @@ export default {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .submit-btn:hover {
@@ -199,5 +200,10 @@ export default {
   color: red;
   margin-top: 1rem;
   font-size: 0.9rem;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-weight: bold;
 }
 </style>
