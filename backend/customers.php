@@ -6,7 +6,8 @@ try {
     $query = "SELECT 
                 accounts.id, 
                 accounts.firstname, 
-                accounts.lastname, 
+                accounts.lastname,
+                accounts.email, 
                 addresses.street, 
                 addresses.house_number, 
                 addresses.city, 

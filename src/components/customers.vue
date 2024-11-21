@@ -12,6 +12,7 @@
           <th>Kunden-ID</th>
           <th>Vorname</th>
           <th>Nachname</th>
+          <th>E-Mail</th>
           <th>Straße</th>
           <th>Hausnummer</th>
           <th>Stadt</th>
@@ -24,6 +25,7 @@
           <td>{{ customer.id }}</td>
           <td>{{ customer.firstname }}</td>
           <td>{{ customer.lastname }}</td>
+          <td>{{ customer.email }}</td>
           <td>{{ customer.street }}</td>
           <td>{{ customer.house_number }}</td>
           <td>{{ customer.city }}</td>
