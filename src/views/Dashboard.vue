@@ -35,7 +35,7 @@
                 <p>Willkommen im Dashboard! Hier kannst du deine Daten einsehen.</p>
               </div>
               <div v-if="showOrders"><Orders /></div>
-              <div v-if="showAddresses"><p>Hier können deine gespeicherten Adressen verwaltet werden.</p></div>
+              <div v-if="showAddresses"><Adress /></div>
             </div>
           </div>
         </div>
@@ -50,6 +50,7 @@ import Overview from '@/components/overview.vue';
 import Orders from '@/components/orders.vue';
 import product_editor from '@/components/product_editor.vue';
 import Customers from '@/components/customers.vue';
+import Adress from '@/components/address.vue';
 
 export default {
   name: 'Dashboard',
@@ -58,7 +59,8 @@ export default {
     product_editor,
     Overview,
     Orders,
-    Customers
+    Customers,
+    Adress,
   },
   data() {
     return {
