@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 include('db_connection.php');
 
 // SQL-Abfrage, um alle Produkte abzurufen
-$sql = "SELECT * FROM products";
+$sql = "SELECT * FROM products ORDER BY created_at";
 $result = $conn->query($sql);
 
 $products = [];

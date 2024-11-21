@@ -89,7 +89,7 @@ export default {
 .badge {
   font-size: 1rem; 
   font-weight: 400;
-  background-color: rgb(223, 239, 255);
+  background-color: rgb(238, 238, 238);
   color: #000000;
 }
  h2 {
