@@ -6,7 +6,7 @@ try {
     // Eingabedaten auslesen
     $input = json_decode(file_get_contents("php://input"), true);
 
-    if (!isset($input['sku'], $input['name'], $input['brand'], $input['price'])) {
+    if (!isset($input['sku'], $input['name'], $input['brand'], $input['price'], $input['image'])) {
         throw new Exception("Ungültige Eingabedaten");
     }
 
@@ -15,11 +15,12 @@ try {
     $name = $input['name'];
     $brand = $input['brand'];
     $price = $input['price'];
+    $image = $input['image'];
 
     // Update-Query ausführen
-    $query = "UPDATE products SET name = ?, brand = ?, price = ? WHERE sku = ?";
+    $query = "UPDATE products SET name = ?, brand = ?, price = ?, image = ? WHERE sku = ?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssds", $name, $brand, $price, $sku);
+    $stmt->bind_param("ssdss", $name, $brand, $price, $image, $sku);
 
     if ($stmt->execute()) {
         echo json_encode(["success" => true, "message" => "Produkt erfolgreich aktualisiert."]);
