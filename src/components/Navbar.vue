@@ -64,7 +64,7 @@ export default {
     };
   },
   created() {
-    // Hier prüfen wir, ob der Nutzer bereits eingeloggt ist
+    // Hier prüfen, ob der Nutzer bereits eingeloggt ist
     const userLoggedIn = this.checkUserLoggedIn();
     if (userLoggedIn) {
       // Wenn der Nutzer eingeloggt ist, kein Popup anzeigen

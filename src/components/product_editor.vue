@@ -219,21 +219,24 @@ export default {
   }
 },
 
-  async uploadImage(formData) {
-    try {
-      const response = await fetch("http://localhost/code_online_shop/backend/upload_image.php", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await response.json();
-      if (!data.success) {
-        this.errorMessage = "Fehler beim Hochladen des Bildes.";
-      }
-    } catch (error) {
+async uploadImage(formData) {
+  try {
+    const response = await fetch("http://localhost/code_online_shop/backend/upload_image.php", {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    console.log(data);  // Debugging-Zeile, um die Antwort zu prüfen
+    if (!data.success) {
       this.errorMessage = "Fehler beim Hochladen des Bildes.";
-      console.error("Fehler beim Senden der Anfrage:", error);
+    } else {
+      this.errorMessage = ""; // Erfolgreich hochgeladen, Fehlernachricht zurücksetzen
     }
-  },
+  } catch (error) {
+    this.errorMessage = "Fehler beim Hochladen des Bildes.";
+    console.error("Fehler beim Senden der Anfrage:", error);
+  }
+},
 
   cancelEdit() {
     this.isEditing = false;
