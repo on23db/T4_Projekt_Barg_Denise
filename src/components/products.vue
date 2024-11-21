@@ -5,9 +5,9 @@
     <div class="row">
       <div v-for="(product, index) in products" :key="index" class="col-6 col-md-4 col-lg-3 mb-3">
         <div class="card">
-          <td>
+          
           <img :src="'/backend/uploads/' + product.image" alt="Produktbild" @error="handleImageError">
-          </td>
+          
           <div class="card-body">
             <p class="card-text">{{ product.brand }}</p>
             <h5 class="card-title">{{ product.name }}</h5>
