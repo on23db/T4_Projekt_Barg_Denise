@@ -77,7 +77,6 @@ export default {
         const result = await response.json();
         
         if (result.message === "Login erfolgreich!") {
-          console.log("Login erfolgreich");
           this.$router.push({ name: 'Dashboard' });
           this.$emit('close');
         } else {
@@ -111,7 +110,6 @@ export default {
         const result = await response.json();
         
         if (result.message === "Registrierung erfolgreich!") {
-          console.log("Registrierung erfolgreich");
           this.toggleForm(); // Wechsel zu Login nach erfolgreicher Registrierung
         } else {
           this.loginError = result.message || "Registrierung fehlgeschlagen";

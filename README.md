@@ -1,4 +1,4 @@
-# project_barg_denise
+# project_onlineshop_t4
 
 This template should help get you started developing with Vue 3 in Vite.
 

@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require('db_connection.php');
+include('db_connection.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];

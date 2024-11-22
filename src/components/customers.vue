@@ -42,7 +42,7 @@ export default {
   name: "customers",
   data() {
     return {
-      customers: [], // Liste der Kunden
+      customers: [],
       errorMessage: "",
     };
   },

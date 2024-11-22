@@ -76,7 +76,7 @@ export default {
   name: "product_editor",
   data() {
     return {
-      products: [], // Liste der Produkte
+      products: [], 
       editedProduct: {
         sku: "",
         name: "",
@@ -85,7 +85,7 @@ export default {
         image: "", // Bild-Dateiname
       },
       isEditing: false, 
-      isCreating: false, // Neue Variable für das Erstellen eines Produkts
+      isCreating: false, 
       errorMessage: "",
     };
   },
@@ -125,7 +125,6 @@ export default {
 
   async updateProduct() {
   try {
-    // Setze die SKU direkt aus der Eingabe
     const response = await fetch("http://localhost/code_online_shop/backend/update_product.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -136,7 +135,6 @@ export default {
       // Produkt in der Liste direkt überschreiben
       const index = this.products.findIndex((p) => p.sku === this.editedProduct.sku);
       if (index !== -1) {
-        // SKU direkt überschreiben
         this.products[index] = { ...this.editedProduct };
         this.isEditing = false;
       } else {
@@ -209,8 +207,8 @@ export default {
   if (file) {
     const formData = new FormData();
     const newFileName = `${file.name}`;
-    formData.append("image", file, newFileName);  // Datei mit neuem Namen anhängen
-    this.editedProduct.image = newFileName;  // Den neuen Dateinamen speichern
+    formData.append("image", file, newFileName);  
+    this.editedProduct.image = newFileName; 
     const reader = new FileReader();
     reader.onload = (e) => {
       this.imagePreview = e.target.result;
@@ -227,7 +225,6 @@ async uploadImage(formData) {
       body: formData,
     });
     const data = await response.json();
-    console.log(data);  // Debugging-Zeile, um die Antwort zu prüfen
     if (!data.success) {
       this.errorMessage = "Fehler beim Hochladen des Bildes.";
     } else {

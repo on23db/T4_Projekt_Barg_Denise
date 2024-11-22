@@ -43,7 +43,7 @@ export default {
       }
     },
     handleImageError(event) {
-    event.target.src = '/backend/uploads/platzhalter.png'; // Standardbild setzen
+    event.target.src = '/backend/uploads/platzhalter.png'; // Standardbild setzen, wenn kein hinterlegtes Bild vorhanden ist
   },
 }
 };
@@ -108,5 +108,10 @@ p {
   font-weight: bold; 
   font-size: 1.5rem;
   padding-top: 15px;
+}
+mark {
+  background-color: #ffebc3;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
 }
 </style>
